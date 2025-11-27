@@ -2,6 +2,52 @@
     margin: 0;
     padding: 0;
 }
+:root{
+    --primary: rgb(0, 200, 255);
+    --primary-dark: rgb(0, 150, 210);
+    --bg-soft: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+}
+html {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    color: var(--text-main);
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  
+  h3, h4 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  
+  ul {
+    line-height: 1.5;
+  }  
 body{
     height: 100%;
 }
@@ -12,7 +58,7 @@ body{
     grid-template-rows: 1fr 5fr;
     grid-template-areas: "sidebar header"
                         "sidebar cont";
-    
+    height: 100vh;
 
 }
 
@@ -20,12 +66,12 @@ body{
 .sidebar{
     grid-area: sidebar;
     display: grid;
-    height: 100%;
     grid-template-rows: 1fr 8fr;
     padding: 25px;
-    background-color: rgb(0, 200, 255);
-    color: white;
-    font-size: 30px;
+    background-color: var(--primary-dark);
+    color: var(--card-bg);
+    font-size: 25px;
+    line-height: 1.3;
     font-weight: bold;
 
 }
@@ -35,13 +81,22 @@ body{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr 1fr 1fr 6fr;
     gap: 15px;
-    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+
 
 }
 .s-links a{
-    color: white;
+    color: var(--card-bg);
     text-decoration: none;
-
+    font-size: 18px;
+    padding: 6px 0;
+    display: block;
+    transition: color 0.2s ease, transform 0.1s ease;
+}
+.s-links a:hover {
+    color: #e5f6ff; /* lighter */
+    transform: translateX(4px);
 }
 .header{
     grid-area: header;
@@ -51,7 +106,9 @@ body{
     grid-template-columns: 4fr 1fr;                    
     padding: 30px;   
     font-size: 15px;     
-    gap: 50px;            
+    gap: 50px;   
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
 }
 .name{
     margin-left: auto;
@@ -59,18 +116,34 @@ body{
 
 #search{
     border-radius: 10px;
-    width: 500px; 
+    width: 700px;
+    height: 25px; 
 }
 .options{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
+    align-items: start;
 }
 .options button{
-    background-color: rgb(0, 200, 255);
+    background-color: var(--primary-dark);
     color: white;
-    border-radius: 15px;
+    border: none;
+    padding: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 
+}
+.options button:hover{
+    background-color: rgb(0, 150, 210);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.options button:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 .cont{
     grid-area: cont;
@@ -79,8 +152,8 @@ body{
     padding: 25px;
     grid-template-areas: "Projects Announcements"
                          "Projects Trend";
-    grid-template-rows: 4fr 1fr;
-    grid-template-rows: 1fr 1fr;                     
+    grid-template-rows: 1fr 1fr;
+                        
 }
 .Projects{
     display: grid;
@@ -92,6 +165,7 @@ body{
 }
 .Projects h2{
     grid-area: head;
+    
 }
 .Projects-boxes{
     grid-area: box;
@@ -103,7 +177,25 @@ body{
     background-color: white;
     padding: 50px;
     border-left: 5px rgb(234, 234, 71) solid;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
+.Projects .box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+.Projects .box h2{
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.Projects .box p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
 .Announcements{
     grid-area: Announcements;
     padding-left: 25px;
@@ -125,9 +217,12 @@ body{
     display: grid;
     background-color: white;
     gap: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
 }
 .Announcements .ann{
     border-bottom: 2px black solid;
+    padding: 25px;
 }
 
 .Trend{
@@ -147,7 +242,24 @@ body{
     gap: 15px;
     grid-area: Peace;
     display: grid;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
 }
 .Trend .set{
     place-self: center;
+}
+
+
+.Announcements .ann h4,
+.Trend .set h4 {
+  font-size: 16px;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.Announcements .ann p,
+.Trend .set p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
